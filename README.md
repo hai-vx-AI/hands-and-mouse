@@ -19,7 +19,7 @@ Hệ thống điều khiển chuột máy tính không chạm thông qua Camera,
 
 **Bước 1: Clone mã nguồn về máy**
 ```bash
-git clone [https://github.com/hai-vx-AI/hands-and-mouse.git](https://github.com/hai-vx-AI/hands-and-mouse.git)
+git clone https://github.com/hai-vx-AI/hands-and-mouse.git
 cd hands-and-mouse
 ```
 
