@@ -1,0 +1,9 @@
+# Rác Biên dịch & Môi trường
+__pycache__/
+.venv/
+
+# Dữ liệu & Trọng số (Tuyệt đối không đẩy lên Git)
+garbage/
+hagrid-sample-*/
+hand_labels/
+hand_labels_synth/
