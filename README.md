@@ -46,11 +46,21 @@ python main.py
 
 ## 🕹️ Ma trận Cử chỉ Mặc định (Command Routing)
 
-*   **1 Ngón tay (Trỏ):** Rê chuột tự do trên không gian 2D. Tọa độ được gọt giũa qua ZUPT Kalman Filter.
-*   **2 Ngón tay (Chụm lại & Lướt):** Kéo thả (Drag & Drop). Yêu cầu quỹ đạo bứt phá khỏi vùng `DRAG_RADIUS` để mở khóa ly hợp cơ học.
-*   **2 Ngón tay (Chụm lại & Giữ tĩnh):** Đổ bê tông tọa độ, giữ chuột tĩnh lặng tuyệt đối. Cơ chế này ép hệ thống từ chối mọi sự kiện xê dịch cấp thấp của Windows, thiết kế chuyên biệt để bảo vệ tính năng Tua nhanh x2 trên YouTube.
-*   **3 Ngón tay:** Cuộn trang (Scroll) mượt mà dựa trên vi phân tọa độ Y. Tích hợp cơ chế Grace Period (Thời gian ân hạn) để chống đứt gãy lệnh khi AI rớt nhãn trong tíc tắc.
-*   **Nắm tay (Fist):** Cầu dao An toàn (Kill Switch) - Hệ thống lập tức thả mọi mỏ neo, cắt đứt luồng tín hiệu truyền xuống Windows API và reset toàn bộ trạng thái Máy trạng thái.
+1 Ngón tay (Trỏ): Rê chuột tự do trên không gian 2D. Tọa độ được gọt giũa qua ZUPT Kalman Filter.
+
+2 Ngón tay (Chụm lại & Lướt): Kéo thả (Drag & Drop). Yêu cầu quỹ đạo bứt phá khỏi vùng DRAG_RADIUS để mở khóa ly hợp cơ học.
+
+2 Ngón tay (Chụm lại & Giữ tĩnh): Đổ bê tông tọa độ, giữ chuột tĩnh lặng tuyệt đối. Cơ chế này ép hệ thống từ chối mọi sự kiện xê dịch cấp thấp của Windows, thiết kế chuyên biệt để bảo vệ tính năng Tua nhanh x2 trên YouTube.
+
+3 Ngón tay: Cuộn trang (Scroll) mượt mà dựa trên vi phân tọa độ Y. Tích hợp cơ chế Grace Period (Thời gian ân hạn) để chống đứt gãy lệnh khi AI rớt nhãn trong tíc tắc.
+
+Các trạng thái còn lại (Nắm tay hoặc Không xác định): Cầu dao An toàn (Kill Switch) - Áp dụng nguyên tắc từ chối mặc định (Default Deny). Khi cấu trúc tay không khớp với bất kỳ nhãn định tuyến nào, hệ thống lập tức thả mọi mỏ neo, cắt đứt luồng tín hiệu truyền xuống Windows API và reset toàn bộ Máy trạng thái về điểm gốc.
+
+Chú ý: Giới hạn Không gian & Hiệu chuẩn Hành vi (System Limits & User Calibration)
+
+Khả năng phân loại của mô hình Machine Learning bị đóng khung chặt chẽ bởi đa giác không gian của bộ dữ liệu huấn luyện. Do đó, độ nhạy và tính liên tục của hệ thống phụ thuộc trực tiếp vào góc xoay của bàn tay so với trục chiếu quang học của camera.
+
+Nếu người dùng bẻ cổ tay vào các góc khuất, góc vuông dị biệt, hoặc để các ngón tay che khuất lẫn nhau, cấu trúc hình học của ma trận 3D (keypoints) sẽ bị biến dạng so với dữ liệu gốc, dẫn đến hiện tượng rớt nhãn. Việc làm chủ hệ thống này yêu cầu một quá trình "hiệu chuẩn hành vi" (behavioral calibration): người dùng cần thời gian ngắn để làm quen và đồng bộ thao tác vật lý của mình vào không gian nhận diện tối ưu của thiết bị, từ đó mới có thể kích hoạt được độ mượt mà tối đa của toàn bộ kiến trúc.
 
 ## ⚠️ Điểm mù & Giới hạn Vật lý (Known Limitations)
 
